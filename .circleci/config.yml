@@ -1,0 +1,18 @@
+jobs:
+  build:
+    docker:
+      - image: jetcipher/circleci-dotnet-core:3.0
+    steps:
+      - checkout
+      - run:
+          name: Restore
+          command: dotnet restore
+          working_directory: WebApp
+      - run:
+          name: Build
+          command: dotnet build -c Release
+          working_directory: WebApp
+      - run:
+          name: Running Tests
+          command: dotnet test
+          working_directory: WebApp.Tests
