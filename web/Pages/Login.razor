@@ -1,5 +1,8 @@
 ﻿@page "/login"
 @using Microsoft.AspNetCore.WebUtilities
+@using VkNet
+@using VkNet.Model
+@using VkNet.Model.RequestParams
 @inject NavigationManager nav
 @*//NavigationManager*@
 
@@ -15,11 +18,24 @@
 
     protected override void OnInitialized()
     {
-        var query = new Uri(nav.Uri).Query;
-
-        if (QueryHelpers.ParseQuery(query).TryGetValue("code", out var value))
+        var query = new Uri(nav.Uri).Fragment;
+        //QueryHelpers.ParseQuery(query).TryGetValue("#access_token", out var value);
+        //queryValue += value;
+        //queryValue = nav.Uri;
+        if (QueryHelpers.ParseQuery(query).TryGetValue("#access_token", out var value))
+        //user_id
         {
-            queryValue = value;
+            var api = new VkApi();
+
+            api.Authorize(new ApiAuthParams
+            {
+                AccessToken = value
+            });
+            Console.WriteLine(api.Token);
+            var res = api.Groups.Get(new GroupsGetParams());
+
+            //queryValue = res.TotalCount.ToString();
+            queryValue = api.Account.GetAppPermissions(api.UserId.GetValueOrDefault()).ToString() + "      " + api.UserId.GetValueOrDefault().ToString()+"  "+api.Users;
         }
     }
 }
