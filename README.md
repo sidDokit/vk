@@ -1,6 +1,8 @@
+[![CircleCI](https://circleci.com/gh/sidDokit/vk.svg?style=shield)](https://circleci.com/gh/sidDokit/vk)
 # About
-This is Web app collected open data about you sosocial networks
+
+It is a web application that collects your public data on social networks.  
 
 
 # Do good  
-[Create new project](Practical/Create_new_project.md)
+[Create new project](docs/Create_new_project.md)

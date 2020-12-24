@@ -1,0 +1,9 @@
+version: '3.4'
+
+services:
+  webapp:
+    image: siddokit/webapp:latest
+    ports:
+      - 80:80
+      - 433:433
+#docker run -d --name webapi1 -p 80:80 -p 433:433 siddokit/webapp
