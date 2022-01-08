@@ -5,4 +5,4 @@ It is a web application that collects your public data on social networks.
 
 
 # Do good  
-[Create new project](docs/Create_new_project.md)
+[Create new project](Docs/Create_new_project.md)
